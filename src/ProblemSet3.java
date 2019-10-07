@@ -28,7 +28,7 @@ public class ProblemSet3 {
         
         // comment out or uncomment as needed
         
-        ps.sign();          // executes Exercise 1
+        //ps.sign();          // executes Exercise 1
         ps.parity();        // executes Exercise 2
         ps.ordered();       // executes Exercise 3
         ps.gpa();           // executes Exercise 4
@@ -46,6 +46,9 @@ public class ProblemSet3 {
      * Exercise 1.
      * 
      * Prompt the user to enter an integer. Is it positive, negative, or zero?
+     * 
+     * Solved!
+     * 
      */
     
     public void sign() {
@@ -67,9 +70,23 @@ public class ProblemSet3 {
      * Exercise 2.
      * 
      * Prompt the user to enter an integer. Is it even or odd?
+     * 
+     * Solved!
+     * 
      */
     
     public void parity() {
+
+        System.out.print("\nEnter an integer: ");
+        int userInt = in.nextInt(); //From Ex. 1
+        in.nextLine();
+
+        if (userInt % 2 == 1) {
+            System.out.println("\nOdd.");
+        } else {
+            System.out.println("\nEven.");
+        }
+
 
     }
     

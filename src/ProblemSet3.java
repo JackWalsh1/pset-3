@@ -49,6 +49,17 @@ public class ProblemSet3 {
      */
     
     public void sign() {
+        System.out.print("\nEnter an integer: ");
+        int userInt = in.nextInt();
+        in.nextLine();
+
+        if (userInt > 0) {
+            System.out.println("\nPositive.");
+        } else if (userInt < 0) {
+            System.out.println("\nNegative.");
+        } else {
+            System.out.println("\nZero.");
+        }
 
     }
     

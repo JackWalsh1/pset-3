@@ -30,7 +30,7 @@ public class ProblemSet3 {
         
         //ps.sign();          // executes Exercise 1
         //ps.parity();        // executes Exercise 2
-        ps.ordered();       // executes Exercise 3
+        //ps.ordered();       // executes Exercise 3
         ps.gpa();           // executes Exercise 4
         ps.grade();         // executes Exercise 5
         ps.cards();         // executes Exercise 6
@@ -141,9 +141,82 @@ public class ProblemSet3 {
      * Exercise 4.
      * 
      * Prompt the user to enter a letter grade. What's the corresponding GPA?
+     * 
+     * 
      */
     
     public void gpa() {
+
+        boolean validInput = true;
+        String gradeLetter = "";
+        String gradeSign = "";
+        double GPA = 0.00;
+        
+        final double A_VALUE = 4.00;
+        final double B_VALUE = 3.00;
+        final double C_VALUE = 2.00;
+        final double D_VALUE = 1.00;
+        final double F_VALUE = 0.00;
+        final double PLUS_VALUE = 0.33;
+        final double MINUS_VALUE = -0.33;
+
+        System.out.print("\nEnter a letter grade: ");
+        String userGrade = in.nextLine();
+
+        if (userGrade.length() == 0 || userGrade.length() > 2 ) { //acceptable inputs are 1 or 2 characters
+            validInput = false;
+        } else if (userGrade.equals("F+") || userGrade.equals("F-")) { //checks for invalid F grades, separated for readibility
+            validInput = false;
+        } else { //separates letter from sign, if there is one
+            gradeLetter = userGrade.substring(0, 1);
+            if (userGrade.length() == 2) {
+                gradeSign = userGrade.substring(1);
+            }
+        }
+
+        switch (gradeLetter) { //determines letter value
+            case "A":
+                GPA = A_VALUE;
+                break;
+            case "B":
+                GPA = B_VALUE;
+                break;
+            case "C":
+                GPA = C_VALUE;
+                break;
+            case "D":
+                GPA = D_VALUE;
+                break;
+            case "F":
+                GPA = F_VALUE;
+                break;
+            default:
+                validInput = false;
+                break;
+        }
+
+        switch (gradeSign) { //determines sign's value, if any
+            case "+":
+                if (!(gradeLetter.equals("A"))) {
+                    GPA += PLUS_VALUE;
+                }
+                break;
+            case "-": 
+                GPA += MINUS_VALUE;
+                break;
+            case "":
+                break;
+            default: 
+                validInput = false;
+                break;
+        }
+
+
+        if (validInput == true) {
+            System.out.printf("%s %.2f %s", "\nYour GPA is", GPA, " \b.");
+        } else {
+            System.out.println("\nThat's not a valid letter grade.");
+        }
 
     }
     

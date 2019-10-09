@@ -29,7 +29,7 @@ public class ProblemSet3 {
         // comment out or uncomment as needed
         
         //ps.sign();          // executes Exercise 1
-        ps.parity();        // executes Exercise 2
+        //ps.parity();        // executes Exercise 2
         ps.ordered();       // executes Exercise 3
         ps.gpa();           // executes Exercise 4
         ps.grade();         // executes Exercise 5
@@ -78,7 +78,7 @@ public class ProblemSet3 {
     public void parity() {
 
         System.out.print("\nEnter an integer: ");
-        int userInt = in.nextInt(); //From Ex. 1
+        int userInt = in.nextInt();
         in.nextLine();
 
         if (userInt % 2 == 1) {
@@ -94,9 +94,46 @@ public class ProblemSet3 {
      * Exercise 3.
      * 
      * Prompt the user to enter three integers. How are the integers ordered?
+     * 
+     * Solved, for now.
+     * 
      */
     
     public void ordered() {
+
+        boolean strictlySpaced = false; //declaration + initialization for later use
+
+        System.out.print("\nEnter three integers, one at a time.\n\nEnter an integer: ");
+        int userInt1 = in.nextInt();
+        in.nextLine();
+        System.out.print("Enter an integer: ");
+        int userInt2 = in.nextInt();
+        in.nextLine();
+        System.out.print("Enter an integer: ");
+        int userInt3 = in.nextInt();
+        in.nextLine();  
+
+        if ((userInt2 - userInt1) == (userInt3 - userInt2)) { //if 2-1 = 3-2, the #'s are equidistant
+            strictlySpaced = true;
+        }
+
+        if (userInt1 == userInt2 && userInt2 == userInt3) { //if all ints are equal
+            System.out.println("\nSame.");
+        } else if (userInt1 <= userInt2 && userInt2 <= userInt3) { //if each # is bigger than the last
+            if(strictlySpaced == true){ 
+                System.out.println("\nStrictly increasing.");
+            } else {
+                System.out.println("\nIncreasing.");
+            }
+        } else if (userInt1 >= userInt2 && userInt2 >= userInt3) { //if each # is smaller than the last
+            if(strictlySpaced == true){ 
+                System.out.println("\nStrictly decreasing.");
+            } else {
+                System.out.println("\nDecreasing.");
+            }
+        } else { //numbers must logically be unordered
+            System.out.println("\nUnordered.");
+        }
 
     }
     

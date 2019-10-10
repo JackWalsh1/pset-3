@@ -278,25 +278,90 @@ public class ProblemSet3 {
     
     public void cards() {
 
-        String cardRank = "";
-        String cardSuit = "";
-        boolean validInput = true;
-        String cardRank = "";
-        String cardSuit = "";
+        String cardRankAbbrev = ""; //Card Rank Abbreviated (T)
+        String cardSuitAbbrev = ""; //Card Suit Abbreviated (C)
+        boolean validSuit = true;
+        boolean validRank = false;
+        String cardRankFull = ""; //Card Rank Full (Ten)
+        String cardSuitFull = ""; //Card Suit Full (Clubs)
 
         System.out.print("\nEnter a card: ");
         String userCard = in.nextLine();
 
-        if (!(userCard.length() == 2)) { //acceptable inputs are 2 characters
-            validInput = false;
-        } else { //separates rank from suit
-            cardRank = userCard.substring(0, 1);
-            cardRank = cardRank.toUpperCase();
-            cardSuit = userCard.substring(1);
-            cardSuit = cardSuit.toUpperCase();
+        cardRankAbbrev = userCard.substring(0, 1);
+        cardRankAbbrev = cardRankAbbrev.toUpperCase();
+        cardSuitAbbrev = userCard.substring(1);
+        cardSuitAbbrev = cardSuitAbbrev.toUpperCase();
+
+        switch(cardSuitAbbrev) {
+            case "2":
+                cardSuitFull = "Two";
+                break;
+            case "3":
+                cardSuitFull = "Three";
+                break;
+            case "4":
+                cardSuitFull = "Four";
+                break;
+            case "5":
+                cardSuitFull = "Five";
+                break;
+            case "6":
+                cardSuitFull = "Six";
+                break;
+            case "7":
+                cardSuitFull = "Seven";
+                break;
+            case "8":
+                cardSuitFull = "Eight";
+                break;
+            case "9":
+                cardSuitFull = "Nine";
+                break;
+            case "T":
+                cardSuitFull = "Ten";
+                break;
+            case "J":
+                cardSuitFull = "Jack";
+                break;
+            case "Q":
+                cardSuitFull = "Queen";
+                break;
+            case "K":
+                cardSuitFull = "King";
+                break;
+            case "A":
+                cardSuitFull = "Ace";
+                break;
+            default:
+                validSuit = false;
         }
 
-        switch()
+        switch(cardRankAbbrev) {
+            case "C":
+                cardRankFull = "Clubs";
+                break;
+            case "D":
+                cardRankFull = "Diamonds";
+                break;
+            case "H":
+                cardRankFull = "Hearts";
+                break;
+            case "S":
+                cardRankFull = "Spades";
+                break;
+            default:
+                validRank = false;
+                break;
+        }
+
+        if (validRank == false) {
+            System.out.print("\nThat's not a valid suit.");
+        } else if (validRank == false) {
+            System.out.print("\nThat's not a valid rank.");
+        } else {
+            System.out.println("\n" + cardRankFull + " of " + cardSuitFull);
+        }
     }
     
     /*

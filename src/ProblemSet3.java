@@ -31,7 +31,7 @@ public class ProblemSet3 {
         //ps.sign();          // executes Exercise 1
         //ps.parity();        // executes Exercise 2
         //ps.ordered();       // executes Exercise 3
-        ps.gpa();           // executes Exercise 4
+        //ps.gpa();           // executes Exercise 4
         ps.grade();         // executes Exercise 5
         ps.cards();         // executes Exercise 6
         ps.leapYear();      // executes Exercise 7
@@ -142,6 +142,7 @@ public class ProblemSet3 {
      * 
      * Prompt the user to enter a letter grade. What's the corresponding GPA?
      * 
+     * Solved.
      * 
      */
     
@@ -169,10 +170,12 @@ public class ProblemSet3 {
             validInput = false;
         } else { //separates letter from sign, if there is one
             gradeLetter = userGrade.substring(0, 1);
+            gradeLetter = gradeLetter.toUpperCase();
             if (userGrade.length() == 2) {
                 gradeSign = userGrade.substring(1);
             }
         }
+
 
         switch (gradeLetter) { //determines letter value
             case "A":
@@ -213,7 +216,7 @@ public class ProblemSet3 {
 
 
         if (validInput == true) {
-            System.out.printf("%s %.2f %s", "\nYour GPA is", GPA, " \b.");
+            System.out.printf("\nYour GPA is %.2f.", GPA);
         } else {
             System.out.println("\nThat's not a valid letter grade.");
         }
@@ -228,6 +231,41 @@ public class ProblemSet3 {
     
     public void grade() {
 
+        boolean validInput = true;
+        boolean useAn = false;
+        final int A_THRESHOLD = 90;
+        final int B_THRESHOLD = 80;
+        final int C_THRESHOLD = 70;
+        final int D_THRESHOLD = 60;
+        String userLetterGrade = "";
+
+        System.out.print("\nEnter a number grade: ");
+        double userNumberGrade = in.nextDouble();
+
+        if (userNumberGrade >= A_THRESHOLD) {
+            userLetterGrade = "A";
+            useAn = true;
+        } else if (userNumberGrade >= B_THRESHOLD) {
+            userLetterGrade = "B";
+        } else if (userNumberGrade >= C_THRESHOLD) {
+            userLetterGrade = "C";
+        } else if (userNumberGrade >= D_THRESHOLD) {
+            userLetterGrade = "D";
+        } else {
+            userLetterGrade = "F";
+            useAn = true;
+        }
+
+        
+        if (userNumberGrade < 0){
+            System.out.println("\nGrades below 0 are invalid.");               
+        } else if (userNumberGrade > 100) {
+            System.out.println("\nGrades above 100 are invalid.");
+        } else if (useAn == true) {
+            System.out.println("\nYou received an " + userLetterGrade + ".");
+        } else {
+            System.out.println("\nYou received a " + userLetterGrade + ".");
+        }
     }
     
     /*

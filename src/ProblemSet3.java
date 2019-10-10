@@ -32,7 +32,7 @@ public class ProblemSet3 {
         //ps.parity();        // executes Exercise 2
         //ps.ordered();       // executes Exercise 3
         //ps.gpa();           // executes Exercise 4
-        ps.grade();         // executes Exercise 5
+        //ps.grade();         // executes Exercise 5
         ps.cards();         // executes Exercise 6
         ps.leapYear();      // executes Exercise 7
         ps.state();         // executes Exercise 8
@@ -227,6 +227,8 @@ public class ProblemSet3 {
      * Exercise 5.
      * 
      * Prompt the user to enter a grade. What's the corresponding letter grade?
+     * 
+     * Solved!
      */
     
     public void grade() {
@@ -276,6 +278,25 @@ public class ProblemSet3 {
     
     public void cards() {
 
+        String cardRank = "";
+        String cardSuit = "";
+        boolean validInput = true;
+        String cardRank = "";
+        String cardSuit = "";
+
+        System.out.print("\nEnter a card: ");
+        String userCard = in.nextLine();
+
+        if (!(userCard.length() == 2)) { //acceptable inputs are 2 characters
+            validInput = false;
+        } else { //separates rank from suit
+            cardRank = userCard.substring(0, 1);
+            cardRank = cardRank.toUpperCase();
+            cardSuit = userCard.substring(1);
+            cardSuit = cardSuit.toUpperCase();
+        }
+
+        switch()
     }
     
     /*

@@ -33,8 +33,8 @@ public class ProblemSet3 {
         //ps.ordered();       // executes Exercise 3
         //ps.gpa();           // executes Exercise 4
         //ps.grade();         // executes Exercise 5
-        ps.cards();         // executes Exercise 6
-        ps.leapYear();      // executes Exercise 7
+        //ps.cards();         // executes Exercise 6
+        //ps.leapYear();      // executes Exercise 7
         ps.state();         // executes Exercise 8
         ps.months();        // executes Exercise 9
         ps.salary();        // executes Exercise 10
@@ -253,6 +253,9 @@ public class ProblemSet3 {
      * Exercise 6.
      * 
      * Prompt the user to enter a playing card. What card was entered?
+     * 
+     * Solved!
+     * 
      */
     
     public void cards() {
@@ -310,10 +313,24 @@ public class ProblemSet3 {
      * Exercise 7.
      * 
      * Prompt the user to enter a year. Is it a leap year or not?
+     * 
+     * Solved, though it feels TOO easy...
+     * 
      */
     
     public void leapYear() {
 
+        System.out.print("\nEnter a year: ");
+        int userYear = in.nextInt();
+        in.nextLine();
+
+        boolean isLeapYear = ((userYear % 4) == 0) && ((userYear % 100) != 0) || ((userYear % 400) == 0);
+
+        if (isLeapYear == true) {
+            System.out.print("\n" + userYear + " is a leap year.");
+        } else {
+            System.out.print("\n" + userYear + " is not a leap year.");
+        }
     }
     
     /*
@@ -325,6 +342,44 @@ public class ProblemSet3 {
     
     public void state() {
 
+        final int FREEZING_POINT_C = 0;
+        final int FREEZING_POINT_F = 32;
+        final int BOILING_POINT_C = 100;
+        final int BOILING_POINT_F = 212;
+        boolean validScale = true;
+        String state = "";
+
+        System.out.print("\nEnter a temperature: ");
+        double temperature = in.nextDouble();
+        in.nextLine(); 
+        System.out.print("Enter a scale: ");
+        String scale = in.nextLine(); 
+
+        if (scale.equals("C")) {
+            if (temperature >= BOILING_POINT_C) {
+                state = "Gas.";
+            } else if (temperature > FREEZING_POINT_C) {
+                state = "Liquid.";
+            } else {
+                state = "Solid.";
+            }
+        } else if (scale.equals("F")) {
+            if (temperature >= BOILING_POINT_F) {
+                state = "Gas.";
+            } else if (temperature > FREEZING_POINT_F) {
+                state = "Liquid.";
+            } else {
+                state = "Solid.";
+            }
+        } else {
+            validScale = false;
+        }
+
+        if (validScale == false) {
+            System.out.print("\n That's not a valid scale.");
+        } else {
+            System.out.print("\n" + state);
+        }
     }
     
     /*

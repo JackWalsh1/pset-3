@@ -178,40 +178,19 @@ public class ProblemSet3 {
 
 
         switch (gradeLetter) { //determines letter value
-            case "A":
-                GPA = A_VALUE;
-                break;
-            case "B":
-                GPA = B_VALUE;
-                break;
-            case "C":
-                GPA = C_VALUE;
-                break;
-            case "D":
-                GPA = D_VALUE;
-                break;
-            case "F":
-                GPA = F_VALUE;
-                break;
-            default:
-                validInput = false;
-                break;
+            case "A": GPA = A_VALUE; break;
+            case "B": GPA = B_VALUE; break;
+            case "C": GPA = C_VALUE; break;
+            case "D": GPA = D_VALUE; break;
+            case "F": GPA = F_VALUE; break;
+            default: validInput = false; break;
         }
 
         switch (gradeSign) { //determines sign's value, if any
-            case "+":
-                if (!(gradeLetter.equals("A"))) {
-                    GPA += PLUS_VALUE;
-                }
-                break;
-            case "-": 
-                GPA += MINUS_VALUE;
-                break;
-            case "":
-                break;
-            default: 
-                validInput = false;
-                break;
+            case "+": if (!(gradeLetter.equals("A"))) { GPA += PLUS_VALUE; } break;
+            case "-":  GPA += MINUS_VALUE; break;
+            case "": break;
+            default: validInput = false; break;
         }
 
 
@@ -281,7 +260,7 @@ public class ProblemSet3 {
         String cardRankAbbrev = ""; //Card Rank Abbreviated (T)
         String cardSuitAbbrev = ""; //Card Suit Abbreviated (C)
         boolean validSuit = true;
-        boolean validRank = false;
+        boolean validRank = true;
         String cardRankFull = ""; //Card Rank Full (Ten)
         String cardSuitFull = ""; //Card Suit Full (Clubs)
 
@@ -293,69 +272,32 @@ public class ProblemSet3 {
         cardSuitAbbrev = userCard.substring(1);
         cardSuitAbbrev = cardSuitAbbrev.toUpperCase();
 
-        switch(cardSuitAbbrev) {
-            case "2":
-                cardSuitFull = "Two";
-                break;
-            case "3":
-                cardSuitFull = "Three";
-                break;
-            case "4":
-                cardSuitFull = "Four";
-                break;
-            case "5":
-                cardSuitFull = "Five";
-                break;
-            case "6":
-                cardSuitFull = "Six";
-                break;
-            case "7":
-                cardSuitFull = "Seven";
-                break;
-            case "8":
-                cardSuitFull = "Eight";
-                break;
-            case "9":
-                cardSuitFull = "Nine";
-                break;
-            case "T":
-                cardSuitFull = "Ten";
-                break;
-            case "J":
-                cardSuitFull = "Jack";
-                break;
-            case "Q":
-                cardSuitFull = "Queen";
-                break;
-            case "K":
-                cardSuitFull = "King";
-                break;
-            case "A":
-                cardSuitFull = "Ace";
-                break;
-            default:
-                validSuit = false;
-        }
-
         switch(cardRankAbbrev) {
-            case "C":
-                cardRankFull = "Clubs";
-                break;
-            case "D":
-                cardRankFull = "Diamonds";
-                break;
-            case "H":
-                cardRankFull = "Hearts";
-                break;
-            case "S":
-                cardRankFull = "Spades";
-                break;
-            default:
-                validRank = false;
-                break;
+            case "2": cardRankFull = "Two"; break;
+            case "3": cardRankFull = "Three"; break;
+            case "4": cardRankFull = "Four"; break;
+            case "5": cardRankFull = "Five"; break;
+            case "6": cardRankFull = "Six"; break;
+            case "7": cardRankFull = "Seven"; break;
+            case "8": cardRankFull = "Eight"; break;
+            case "9": cardRankFull = "Nine"; break;
+            case "T": cardRankFull = "Ten"; break;
+            case "J": cardRankFull = "Jack"; break;
+            case "Q": cardRankFull = "Queen"; break;
+            case "K": cardRankFull = "King"; break;
+            case "A": cardRankFull = "Ace"; break;
+            default: validRank = false; break;
         }
 
-        if (validRank == false) {
+        switch(cardSuitAbbrev) {
+            case "C": cardSuitFull = "Clubs"; break;
+            case "D": cardSuitFull = "Diamonds"; break;
+            case "H": cardSuitFull = "Hearts"; break;
+            case "S": cardSuitFull = "Spades"; break;
+            default: validSuit = false; break;
+        }
+
+        if (validSuit == false) {
             System.out.print("\nThat's not a valid suit.");
         } else if (validRank == false) {
             System.out.print("\nThat's not a valid rank.");

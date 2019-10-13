@@ -17,6 +17,7 @@
  * questions, and fix your mistakes. It's the only way to get good at programming.
  */
 
+import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class ProblemSet3 {
@@ -28,14 +29,14 @@ public class ProblemSet3 {
         
         // comment out or uncomment as needed
         
-        //ps.sign();          // executes Exercise 1
-        //ps.parity();        // executes Exercise 2
-        //ps.ordered();       // executes Exercise 3
-        //ps.gpa();           // executes Exercise 4
-        //ps.grade();         // executes Exercise 5
-        //ps.cards();         // executes Exercise 6
-        //ps.leapYear();      // executes Exercise 7
-        //ps.state();         // executes Exercise 8
+        ps.sign();          // executes Exercise 1
+        ps.parity();        // executes Exercise 2
+        ps.ordered();       // executes Exercise 3
+        ps.gpa();           // executes Exercise 4
+        ps.grade();         // executes Exercise 5
+        ps.cards();         // executes Exercise 6
+        ps.leapYear();      // executes Exercise 7
+        ps.state();         // executes Exercise 8
         ps.months();        // executes Exercise 9
         ps.salary();        // executes Exercise 10
         
@@ -195,7 +196,7 @@ public class ProblemSet3 {
 
 
         if (validInput == true) {
-            System.out.printf("\nYour GPA is %.2f.", GPA);
+            System.out.printf("\nYour GPA is %.2f.\n", GPA);
         } else {
             System.out.println("\nThat's not a valid letter grade.");
         }
@@ -222,6 +223,7 @@ public class ProblemSet3 {
 
         System.out.print("\nEnter a number grade: ");
         double userNumberGrade = in.nextDouble();
+        in.nextLine();
 
         if (userNumberGrade >= A_THRESHOLD) {
             userLetterGrade = "A";
@@ -299,11 +301,11 @@ public class ProblemSet3 {
         }
 
         if (validSuit == false) {
-            System.out.print("\nThat's not a valid suit.");
+            System.out.println("\nThat's not a valid suit.");
         } else if (validRank == false) {
-            System.out.print("\nThat's not a valid rank.");
+            System.out.println("\nThat's not a valid rank.");
         } else {
-            System.out.println("\n" + cardRankFull + " of " + cardSuitFull);
+            System.out.println("\n" + cardRankFull + " of " + cardSuitFull + ".");
         }
     }
     
@@ -325,9 +327,9 @@ public class ProblemSet3 {
         boolean isLeapYear = ((userYear % 4) == 0) && ((userYear % 100) != 0) || ((userYear % 400) == 0);
 
         if (isLeapYear == true) {
-            System.out.print("\n" + userYear + " is a leap year.");
+            System.out.println("\n" + userYear + " is a leap year.");
         } else {
-            System.out.print("\n" + userYear + " is not a leap year.");
+            System.out.println("\n" + userYear + " is not a leap year.");
         }
     }
     
@@ -354,7 +356,7 @@ public class ProblemSet3 {
         double temperature = in.nextDouble();
         in.nextLine(); 
         System.out.print("Enter a scale: ");
-        String scale = in.nextLine(); 
+        String scale = in.nextLine().toUpperCase(); 
 
         if (scale.equals("C")) {
             if (temperature >= BOILING_POINT_C) {
@@ -377,9 +379,9 @@ public class ProblemSet3 {
         }
 
         if (validScale == false) {
-            System.out.print("\n That's not a valid scale.");
+            System.out.println("\n That's not a valid scale.");
         } else {
-            System.out.print("\n" + state);
+            System.out.println("\n" + state);
         }
     }
     
@@ -396,11 +398,11 @@ public class ProblemSet3 {
         String month3Char = "";
 
         System.out.print("\nEnter a month: ");
-        String month = in.nextLine();
+        String month = in.nextLine().toUpperCase();
 
         if (month.length() >= 3) { //eliminates 2-or-less character responses
             month3Char = month.substring(0, 3).toUpperCase();
-        }
+        } else if 
 
         switch (month3Char) {
             case "FEB": days = "28 or 29"; break;
@@ -421,9 +423,9 @@ public class ProblemSet3 {
         }
 
         if (validMonth == false) {
-            System.out.print("\nThat's not a valid month.");
+            System.out.println("\nThat's not a valid month.");
         } else {
-            System.out.print("\n" + days + " days.");
+            System.out.println("\n" + days + " days.");
         }
     }
     
@@ -434,6 +436,32 @@ public class ProblemSet3 {
      */
     
     public void salary() {
+
+        final int OVERTIME_THRESHOLD = 40;
+        final double OVERTIME_MULTIPLIER = 1.5;
+        double payment;
+
+        System.out.print("\nWage: ");
+        double wage = in.nextDouble();
+        in.nextLine();
+        System.out.print("Hours: ");
+        double hours = in.nextDouble();
+
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+
+        if (wage < 0) {
+            System.out.println("\nYour wage must be greater than or equal to $0.00/hour.");
+        } else if (hours < 0) {
+            System.out.println("\nYour hours must be greater than or equal to 0.0.");
+        } else {
+            if (hours > OVERTIME_THRESHOLD) {
+                payment = (OVERTIME_THRESHOLD * wage) + ((hours - OVERTIME_THRESHOLD) * wage * OVERTIME_MULTIPLIER);
+            } else {
+                payment = wage * hours;
+            }
+            String formattedPayment = currencyFormat.format(payment);
+            System.out.println("\nYou'll make " + formattedPayment + " this week.");
+        }
 
     }
 }

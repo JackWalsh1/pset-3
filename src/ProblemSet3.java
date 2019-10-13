@@ -35,7 +35,7 @@ public class ProblemSet3 {
         //ps.grade();         // executes Exercise 5
         //ps.cards();         // executes Exercise 6
         //ps.leapYear();      // executes Exercise 7
-        ps.state();         // executes Exercise 8
+        //ps.state();         // executes Exercise 8
         ps.months();        // executes Exercise 9
         ps.salary();        // executes Exercise 10
         
@@ -270,10 +270,8 @@ public class ProblemSet3 {
         System.out.print("\nEnter a card: ");
         String userCard = in.nextLine();
 
-        cardRankAbbrev = userCard.substring(0, 1);
-        cardRankAbbrev = cardRankAbbrev.toUpperCase();
-        cardSuitAbbrev = userCard.substring(1);
-        cardSuitAbbrev = cardSuitAbbrev.toUpperCase();
+        cardRankAbbrev = userCard.substring(0, 1).toUpperCase();
+        cardSuitAbbrev = userCard.substring(1).toUpperCase();
 
         switch(cardRankAbbrev) {
             case "2": cardRankFull = "Two"; break;
@@ -338,6 +336,9 @@ public class ProblemSet3 {
      * 
      * Prompt the user to enter a temperature. At that temperature, is water a solid,
      * liquid, or gas?
+     * 
+     * Solved!
+     * 
      */
     
     public void state() {
@@ -390,6 +391,40 @@ public class ProblemSet3 {
     
     public void months() {        
 
+        String days = "";
+        boolean validMonth = true;
+        String month3Char = "";
+
+        System.out.print("\nEnter a month: ");
+        String month = in.nextLine();
+
+        if (month.length() >= 3) { //eliminates 2-or-less character responses
+            month3Char = month.substring(0, 3).toUpperCase();
+        }
+
+        switch (month3Char) {
+            case "FEB": days = "28 or 29"; break;
+            case "APR":
+            case "JUN":
+            case "SEP":
+            case "NOV": 
+                days = "30"; break;
+            case "JAN":
+            case "MAR":
+            case "MAY":
+            case "JUL":
+            case "AUG":
+            case "OCT":
+            case "DEC":
+                days = "31"; break;
+            default: validMonth = false; break;
+        }
+
+        if (validMonth == false) {
+            System.out.print("\nThat's not a valid month.");
+        } else {
+            System.out.print("\n" + days + " days.");
+        }
     }
     
     /*

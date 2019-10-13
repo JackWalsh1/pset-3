@@ -400,27 +400,58 @@ public class ProblemSet3 {
         System.out.print("\nEnter a month: ");
         String month = in.nextLine().toUpperCase();
 
-        if (month.length() >= 3) { //eliminates 2-or-less character responses
-            month3Char = month.substring(0, 3).toUpperCase();
-        } else if 
-
-        switch (month3Char) {
-            case "FEB": days = "28 or 29"; break;
-            case "APR":
-            case "JUN":
-            case "SEP":
-            case "NOV": 
-                days = "30"; break;
-            case "JAN":
-            case "MAR":
-            case "MAY":
-            case "JUL":
-            case "AUG":
-            case "OCT":
-            case "DEC":
-                days = "31"; break;
-            default: validMonth = false; break;
+        if (month.length() == 3) {
+            switch (month) {
+                case "FEB": days = "28 or 29"; break;
+                case "APR":
+                case "JUN":
+                case "SEP":
+                case "NOV": 
+                    days = "30"; break;
+                case "JAN":
+                case "MAR":
+                case "MAY":
+                case "JUL":
+                case "AUG":
+                case "OCT":
+                case "DEC":
+                    days = "31"; break;
+                default: validMonth = false; break;
+            }
+        } else if (month.length() == 4) {
+            switch (month) {
+                case "FEBR": days = "28 or 29"; break;
+                case "APRI":
+                case "JUNE":
+                case "SEPT":
+                case "NOVE": 
+                    days = "30"; break;
+                case "JANU":
+                case "MARC":
+                case "JULY":
+                case "AUGU":
+                case "OCTO":
+                case "DECE":
+                    days = "31"; break;
+                default: validMonth = false; break;
+            }
+        } else {
+            switch (month) {
+                case "FEBRUARY": days = "28 or 29"; break;
+                case "APRIL":
+                case "SEPTEMBER":
+                case "NOVEMBER": 
+                    days = "30"; break;
+                case "JANUARY":
+                case "MARCH":
+                case "AUGUST":
+                case "OCTOBER":
+                case "DECEMBER":
+                    days = "31"; break;
+                default: validMonth = false; break;
+            }
         }
+
 
         if (validMonth == false) {
             System.out.println("\nThat's not a valid month.");
